@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  text-decoration: none;
 }
 
 html,
@@ -11,6 +12,10 @@ body {
   height: 100%;
   background-color: #0f0f0f;
   color: white;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 .navbar {
@@ -27,6 +32,11 @@ body {
   align-items: center;
 }
 
+.logo-container .sidebar-btn {
+  cursor: pointer;
+  font-size: 16px;
+}
+
 .logo {
   height: 30px;
   width: 30px;
@@ -35,6 +45,8 @@ body {
 .logo-header {
   font-size: 16px;
   font-weight: 500;
+  color: white;
+  cursor: pointer;
 }
 
 .btn-container {
@@ -149,6 +161,10 @@ body {
 .problem-content {
   padding: 18px;
   overflow-y: auto;
+}
+
+.problem-content::-webkit-scrollbar {
+  display: none;
 }
 
 .title h1 {
@@ -360,4 +376,307 @@ td {
 
 th {
   background-color: #2a2a2a;
+}
+.problems-list-container {
+  width: 30%;
+  padding-top: 60px;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px;
+  position: absolute;
+  border-right: 1px solid #2a2a2a;
+  scrollbar-width: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: #1f1f1f;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%);
+}
+
+.problems-list-container.open {
+  transform: translateX(0);
+}
+
+.problems-list-container.closed {
+  transform: translateX(-100%);
+}
+
+.problems-list-container::-webkit-scrollbar {
+  display: none;
+}
+
+.container-title {
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  color: #ffffff;
+  padding: 10px 15px;
+  background-color: #333;
+}
+
+.container-title h3 {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.loading {
+  color: #888;
+  font-size: 14px;
+}
+
+.problems-list-item {
+  min-height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.problems-list-item:hover {
+  background-color: #2f2f2f;
+  transform: translateY(-2px);
+}
+
+.problems-list-item.active {
+  border-bottom: 1px solid #3f3f3f;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f1f1f1;
+}
+
+.difficulty {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* Difficulty Colors */
+.difficulty.easy {
+  color: #00c853;
+}
+
+.difficulty.medium {
+  color: #ffab00;
+}
+
+.difficulty.hard {
+  color: #ff5252;
+}
+
+.close {
+  cursor: pointer;
+}
+
+.hero-container {
+  height: 100vh;
+  width: 100%;
+  background: url("https://images.unsplash.com/photo-1671159593357-ee577a598f71?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZGFyayUyMGdyYWRpZW50fGVufDB8fDB8fHww")
+    center / cover no-repeat;
+}
+
+/* Dark overlay */
+.hero-overlay {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-title {
+  font-size: 10rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+}
+
+.hero-btn {
+  padding: 12px 28px;
+  font-size: 1rem;
+  border: none;
+  background-color: #181818;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.hero-btn:hover {
+  background-color: #3f3f3f;
+  transform: scale(1.05);
+}
+
+/*Assignments.jsx*/
+.assignment-container {
+  min-height: 100vh;
+  padding: 40px 60px;
+  background: linear-gradient(to right, #0f0f0f, #1c1c1c);
+  color: #ffffff;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Top small heading */
+.assignment-container > p:first-child {
+  font-size: 0.95rem;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+/* Header Section */
+.assignment-container-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.assignment-container h1 {
+  font-weight: 600;
+  font-size: 2.2rem;
+  margin: 0;
+}
+
+/* Search Section */
+.assignment-container-header input {
+  width: 280px;
+  height: 40px;
+  padding: 0 15px;
+  background: none;
+  color: white;
+  border: none;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+/* Problem Count Text */
+.assignment-container > p:nth-of-type(2) {
+  margin-bottom: 20px;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* Table */
+.assignment-container table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Header */
+.assignment-container thead {
+  background-color: #262626;
+}
+
+/* Align icon + text inside th */
+.assignment-container th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #bbb;
+  border-bottom: 1px solid #333;
+}
+
+/* Icon base style */
+.header-icon {
+  font-size: 18px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.assignment-container p .header-icon {
+  color: #66bb6a;
+}
+
+.assignment-container th:nth-child(2) .header-icon {
+  color: #4fc3f7;
+}
+
+/* Difficulty Icon */
+.assignment-container th:nth-child(3) .header-icon {
+  color: #ffab00;
+}
+
+/* Deadline Icon */
+.assignment-container th:nth-child(4) .header-icon {
+  color: #66bb6a;
+}
+
+/* Status Icon */
+.assignment-container th:nth-child(5) .header-icon {
+  color: #ef5350;
+}
+
+/* Body */
+.assignment-container td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #2c2c2c;
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+/* Row Hover */
+.clickable-row {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clickable-row:hover {
+  background-color: #2c2c2c;
+}
+
+/* Remove last border */
+.assignment-container tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.assignment-difficulty.easy {
+  color: #00c853;
+}
+
+.assignment-difficulty.medium {
+  color: #ffab00;
+}
+
+.assignment-difficulty.hard {
+  color: #ff5252;
+}
+
+/* Status Badge */
+#assignment-status {
+  color: #f53b3b;
+  padding: 5px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.assignment-container-header .search {
+  display: flex;
+  align-items: center;
+  color: white;
+  background-color: #2a2a2a;
+  padding: 0 10px;
+  border-radius: 20px;
 }

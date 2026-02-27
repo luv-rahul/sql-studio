@@ -1,17 +1,22 @@
 import MonacoEditor from "../components/MonacoEditor";
 import ProblemStatement from "./ProblemStatement";
-import Result from "./Result";
+import Navbar from "./Navbar";
+import ProblemsList from "./ProblemsList";
 
 const Body = () => {
   return (
-    <div className="body">
-      <div className="problem-statement">
-        <ProblemStatement />
+    <>
+      <Navbar />
+      <ProblemsList />
+      <div className="body">
+        <div className="problem-statement">
+          <ProblemStatement />
+        </div>
+        <div className="editor-view">
+          <MonacoEditor />
+        </div>
       </div>
-      <div className="editor-view">
-        <MonacoEditor />
-      </div>
-    </div>
+    </>
   );
 };
 

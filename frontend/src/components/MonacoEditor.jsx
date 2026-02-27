@@ -5,7 +5,6 @@ import { MONACO_EDITOR_TABS } from "../utils/constants";
 
 const MonacoEditor = () => {
   const [activeTab, setActiveTab] = useState("code");
-  console.log(activeTab);
   return (
     <div className="editor-container">
       <div className="editor-header">

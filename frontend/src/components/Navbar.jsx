@@ -1,12 +1,25 @@
+import { useDispatch } from "react-redux";
 import logo from "../assets/logo.png";
 import { AVATAR_URL } from "../utils/constants";
+import { toggleSideBar } from "../slice/appSlice";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+
   return (
     <div className="navbar">
       <div className="logo-container">
         <img className="logo" src={logo} alt="logo" />
-        <h1 className="logo-header">SQL Studio</h1>
+        <Link to="/">
+          <h1 className="logo-header">SQL Studio</h1>
+        </Link>
+        <span
+          onClick={() => dispatch(toggleSideBar())}
+          className="material-symbols-outlined sidebar-btn"
+        >
+          open_in_new
+        </span>
       </div>
 
       <div className="btn-container">

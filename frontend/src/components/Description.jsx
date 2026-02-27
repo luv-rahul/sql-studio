@@ -1,133 +1,135 @@
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+
 const Description = () => {
+  const [assignment, setAssignment] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const userId = 123;
+  const { id } = useParams();
+
+  useEffect(() => {
+    const loadProblemStatement = async () => {
+      try {
+        const response = await fetch(`http://localhost:4000/assignment/${id}`);
+        const data = await response.json();
+        setAssignment(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadProblemStatement();
+  }, [id]);
+
+  useEffect(() => {
+    if (!assignment?._id) return;
+
+    const loadQueryData = async () => {
+      try {
+        await fetch("http://localhost:4000/query/start-assignment", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId,
+            assignmentId: assignment._id,
+          }),
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    loadQueryData();
+  }, [assignment, userId]);
+
+  if (loading) {
+    return <div className="loading">Loading Assignment...</div>;
+  }
+
+  if (!assignment) {
+    return <div>Assignment not found</div>;
+  }
+
   return (
     <div className="problem-content">
       <div className="title">
-        <h1>Recyclable and Low Fat Products</h1>
+        <h1>{assignment.title}</h1>
       </div>
 
       <div className="tags">
-        <span className="tag easy">Easy</span>
-        <span className="tag">Companies</span>
+        <span className={`tag ${assignment.difficulty}`}>
+          {assignment.difficulty}
+        </span>
+
+        {assignment.tags?.map((tag, index) => (
+          <span key={index} className="tag">
+            {tag}
+          </span>
+        ))}
       </div>
 
       <div className="breif-description">
+        <p>{assignment.description}</p>
+        {assignment.examples.map((example, index) => (
+          <div key={index}>
+            <h3>Given Input:</h3>
+            {example?.inputTables?.map((table, tableIndex) => (
+              <div key={table._id || tableIndex}>
+                <h4>Table: {table.name}</h4>
+                <div className="table-box">
+                  <table>
+                    <thead>
+                      <tr>
+                        {table.columns.map((col) => (
+                          <th key={col._id}>{col.name}</th>
+                        ))}
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      {table.rows.map((row, rowIndex) => (
+                        <tr key={rowIndex}>
+                          {row.map((cell, cellIndex) => (
+                            <td key={cellIndex}>{cell}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            ))}
+            <h3>Expected Output:</h3>
+            <div className="table-box">
+              <table>
+                <thead>
+                  <tr>
+                    {example?.expectedOutput?.columns.map((col, index) => (
+                      <th key={index}>{col}</th>
+                    ))}
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {example?.expectedOutput?.rows.map((row, rowIndex) => (
+                    <tr key={rowIndex}>
+                      {row.map((cell, cellIndex) => (
+                        <td key={cellIndex}>{cell}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ))}
         <p>
-          Write an SQL query to find the ids of products that are both low fat
-          and recyclable.
-        </p>
-
-        <h3>Table: Products</h3>
-
-        <div className="table-box">
-          <table>
-            <thead>
-              <tr>
-                <th>Column Name</th>
-                <th>Type</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>product_id</td>
-                <td>int</td>
-              </tr>
-              <tr>
-                <td>low_fats</td>
-                <td>enum ('Y','N')</td>
-              </tr>
-              <tr>
-                <td>recyclable</td>
-                <td>enum ('Y','N')</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <p>
-          product_id is the primary key (column with unique values) for this
-          table.
-        </p>
-
-        <p>
-          low_fats is an ENUM of type ('Y', 'N') where 'Y' means this product is
-          low fat and 'N' means it is not.
-        </p>
-
-        <p>
-          recyclable is an ENUM of type ('Y', 'N') where 'Y' means this product
-          is recyclable and 'N' means it is not.
-        </p>
-
-        <h3>Example 1:</h3>
-
-        <p>
-          <strong>Input:</strong>
-        </p>
-
-        <div className="table-box">
-          <table>
-            <thead>
-              <tr>
-                <th>product_id</th>
-                <th>low_fats</th>
-                <th>recyclable</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>0</td>
-                <td>Y</td>
-                <td>N</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Y</td>
-                <td>Y</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>N</td>
-                <td>Y</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Y</td>
-                <td>Y</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>N</td>
-                <td>N</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <p>
-          <strong>Output:</strong>
-        </p>
-
-        <div className="table-box">
-          <table>
-            <thead>
-              <tr>
-                <th>product_id</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-              </tr>
-              <tr>
-                <td>3</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <p>
-          <strong>Explanation:</strong> Only products 1 and 3 are both low fat
-          and recyclable.
+          <strong>Constraints: {assignment.constraints}</strong>
         </p>
       </div>
     </div>

@@ -1,12 +1,18 @@
 const express = require("express");
 require("dotenv").config();
-const { connectMongo, connectPostgres } = require("./config/database");
-
+const cors = require("cors");
+const { connectMongo, connectPostgres, pool } = require("./config/database");
+const assignmentRoutes = require("./routes/assignmentRoutes");
+const queryRoutes = require("./routes/queryRoutes");
 const app = express();
 const port = process.env.PORT;
+app.use(cors());
 app.use(express.json());
 
-app.use("/", (req, res) => {
+app.use("/assignment", assignmentRoutes);
+app.use("/query", queryRoutes);
+
+app.use("/health", (req, res) => {
   res.status(200).json({ message: "Hello Server!" });
 });
 
