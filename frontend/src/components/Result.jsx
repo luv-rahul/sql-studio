@@ -1,5 +1,11 @@
-const Result = () => {
-  const status = "error";
+const Result = ({ data, status }) => {
+  const isSuccess = status === "success";
+
+  if (!data || !status) {
+    return (
+      <div style={{ width: "50vw", padding: "20px" }}>Run Query First!!</div>
+    );
+  }
 
   return (
     <div className="result-container">
@@ -7,35 +13,46 @@ const Result = () => {
         <div className="result-title">
           <span
             className={`material-symbols-outlined ${
-              status === "success" ? "result-icon" : "error-icon"
+              isSuccess ? "result-icon" : "error-icon"
             }`}
           >
-            {status === "success" ? "check_circle" : "error"}
+            {isSuccess ? "check_circle" : "error"}
           </span>
-          <span> {status === "success" ? "Result" : "Error"}</span>
+          <span> {isSuccess ? "Result" : "Error"}</span>
         </div>
       </div>
 
       <div className="result-body">
-        <div className="status success">✔ Query executed successfully</div>
-
-        <div className="table-box">
-          <table>
-            <thead>
-              <tr>
-                <th>product_id</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-              </tr>
-              <tr>
-                <td>3</td>
-              </tr>
-            </tbody>
-          </table>
+        <div className={`status ${isSuccess ? "success" : "error"}`}>
+          {isSuccess ? "✔ Query executed successfully" : "❌ Query failed"}
         </div>
+
+        {isSuccess && data?.columns && data?.rows && (
+          <div className="table-box">
+            <table>
+              <thead>
+                <tr>
+                  {data.columns.map((col) => (
+                    <th key={col}>{col}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {data.rows.map((row, idx) => (
+                  <tr key={idx}>
+                    {data.columns.map((col) => (
+                      <td key={col}>{row[col]}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+
+        {!isSuccess && data?.error && (
+          <div className="error-message">{data.error}</div>
+        )}
       </div>
     </div>
   );

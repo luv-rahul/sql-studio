@@ -15,11 +15,15 @@ const createWorkspace = async ({ assignmentId, userId }) => {
       throw new Error("Assignment not found");
     }
 
-    const schemaName = `workspace_${userId}`;
+    console.log(assignment);
+
+    const schemaName = `workspace_${userId}`.toLowerCase();
 
     if (!isSafeIdentifier(schemaName)) {
       throw new Error("Invalid schema name");
     }
+
+    console.log(schemaName);
 
     await client.query("BEGIN");
 
@@ -43,21 +47,21 @@ const createWorkspace = async ({ assignmentId, userId }) => {
           const colType =
             col.type.toUpperCase() === "VARCHAR" ? "VARCHAR(255)" : col.type;
 
-          return `"${col.name}" ${colType} ${
+          return `"${col.name.toLowerCase()}" ${colType} ${
             col.isPrimaryKey ? "PRIMARY KEY" : ""
           }`;
         })
         .join(", ");
-
+      const tableName = table.name.toLowerCase();
       await client.query(
-        `CREATE TABLE "${schemaName}"."${table.name}" (${columnDefs})`,
+        `CREATE TABLE "${schemaName}"."${tableName}" (${columnDefs})`,
       );
 
       for (const row of table.rows) {
         const placeholders = row.map((_, i) => `$${i + 1}`).join(",");
 
         await client.query(
-          `INSERT INTO "${schemaName}"."${table.name}" VALUES (${placeholders})`,
+          `INSERT INTO "${schemaName}"."${tableName}" VALUES (${placeholders})`,
           row,
         );
       }
@@ -82,24 +86,22 @@ const runQuery = async ({ query, userId }) => {
       throw new Error("Query and userId required");
     }
 
-    const schemaName = `workspace_${userId}`;
+    const schemaName = `workspace_${userId}`.toLowerCase();
 
     if (!isSafeIdentifier(schemaName)) {
       throw new Error("Invalid schema");
     }
 
-    const trimmedQuery = query.trim().toUpperCase();
+    const trimmedQuery = query.trim();
 
-    if (!trimmedQuery.startsWith("SELECT")) {
+    if (!/^SELECT\b/i.test(trimmedQuery)) {
       throw new Error("Only SELECT queries allowed");
     }
 
-    await client.query("BEGIN");
-    await client.query(`SET LOCAL search_path TO "${schemaName}"`);
+    // Set search_path at session level (not LOCAL) so it persists for the query
+    await client.query(`SET search_path TO "${schemaName}"`);
 
     const result = await client.query(query);
-
-    await client.query("COMMIT");
 
     return {
       success: true,
@@ -107,9 +109,10 @@ const runQuery = async ({ query, userId }) => {
       rows: result.rows,
     };
   } catch (error) {
-    await client.query("ROLLBACK");
     throw error;
   } finally {
+    // Reset search_path before returning client to pool
+    await client.query(`SET search_path TO public`);
     client.release();
   }
 };
