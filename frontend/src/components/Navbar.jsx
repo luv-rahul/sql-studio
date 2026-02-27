@@ -5,10 +5,14 @@ import { setQueryResult, toggleSideBar } from "../slice/appSlice";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const queryValue = useSelector((state) => state.app.queryValue);
+  const { queryValue, selectedAssignmentId } = useSelector(
+    (store) => store.app,
+  );
   const dispatch = useDispatch();
   console.log(queryValue);
   const userId = 123;
+
+  const isRunDisabled = !queryValue?.trim() || !selectedAssignmentId;
 
   const handleRun = async () => {
     if (!queryValue || !queryValue.trim()) {
@@ -26,6 +30,7 @@ const Navbar = () => {
           body: JSON.stringify({
             query: queryValue,
             userId,
+            assignmentId: selectedAssignmentId,
           }),
         },
       );
@@ -52,9 +57,13 @@ const Navbar = () => {
       </div>
 
       <div className="btn-container">
-        <div className="run-btn btn" onClick={handleRun}>
+        <button
+          className={`run-btn btn ${isRunDisabled ? "disabled" : ""}`}
+          onClick={handleRun}
+          disabled={isRunDisabled}
+        >
           <span className="material-symbols-outlined">play_arrow</span>
-        </div>
+        </button>
 
         <div className="submit-btn btn">
           <span className="material-symbols-outlined">cloud_upload</span>

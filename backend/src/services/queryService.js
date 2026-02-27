@@ -78,12 +78,56 @@ const createWorkspace = async ({ assignmentId, userId }) => {
   }
 };
 
-const runQuery = async ({ query, userId }) => {
+const compareResults = (actual, expected) => {
+  if (!expected) return false;
+
+  // 🔹 Normalize single value
+  const normalizeValue = (val) => {
+    if (val === null) return null;
+
+    // convert numeric strings to numbers
+    if (typeof val === "string" && val.trim() !== "" && !isNaN(val)) {
+      return Number(val);
+    }
+
+    return val;
+  };
+
+  // 🔹 Normalize rows
+  const normalizeRows = (rows) =>
+    rows.map((row) => row.map((val) => normalizeValue(val)));
+
+  // 🔹 Compare columns (order insensitive)
+  const actualCols = [...actual.columns].sort();
+  const expectedCols = [...expected.columns].sort();
+
+  if (JSON.stringify(actualCols) !== JSON.stringify(expectedCols)) {
+    return false;
+  }
+
+  // 🔹 Normalize + sort rows (order insensitive)
+  const actualRows = normalizeRows(actual.rows)
+    .map((r) => JSON.stringify(r))
+    .sort();
+
+  const expectedRows = normalizeRows(expected.rows)
+    .map((r) => JSON.stringify(r))
+    .sort();
+
+  return JSON.stringify(actualRows) === JSON.stringify(expectedRows);
+};
+
+const runQuery = async ({ query, userId, assignmentId }) => {
   const client = await pool.connect();
 
   try {
-    if (!query || !userId) {
-      throw new Error("Query and userId required");
+    if (!query || !userId || !assignmentId) {
+      throw new Error("Query, userId and assignmentId required");
+    }
+
+    const assignment = await Assignment.findById(assignmentId);
+    if (!assignment) {
+      throw new Error("Assignment not found");
     }
 
     const schemaName = `workspace_${userId}`.toLowerCase();
@@ -98,20 +142,33 @@ const runQuery = async ({ query, userId }) => {
       throw new Error("Only SELECT queries allowed");
     }
 
-    // Set search_path at session level (not LOCAL) so it persists for the query
     await client.query(`SET search_path TO "${schemaName}"`);
 
-    const result = await client.query(query);
+    const result = await client.query(trimmedQuery);
+
+    const actual = {
+      columns: result.fields.map((f) => f.name),
+      rows: result.rows.map((row) => Object.values(row)),
+    };
+
+    const expected = assignment.examples[0].expectedOutput;
+
+    const isCorrect = compareResults(actual, expected);
 
     return {
       success: true,
-      columns: result.fields.map((f) => f.name),
-      rows: result.rows,
+      correct: isCorrect,
+      result: {
+        expected,
+        actual,
+      },
     };
   } catch (error) {
-    throw error;
+    return {
+      success: false,
+      error: error.message,
+    };
   } finally {
-    // Reset search_path before returning client to pool
     await client.query(`SET search_path TO public`);
     client.release();
   }

@@ -212,6 +212,7 @@ body::-webkit-scrollbar {
 .table-box {
   overflow-x: auto;
   margin: 10px 0;
+  border-radius: 10px;
 }
 
 table {
@@ -679,4 +680,13 @@ th {
   background-color: #2a2a2a;
   padding: 0 10px;
   border-radius: 20px;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.table-section {
+  padding: 0 20px;
 }

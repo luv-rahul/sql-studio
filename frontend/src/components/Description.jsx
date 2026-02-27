@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { setSelectedAssignmentId } from "../slice/appSlice";
 
 const Description = () => {
   const [assignment, setAssignment] = useState(null);
@@ -7,6 +9,7 @@ const Description = () => {
 
   const userId = 123;
   const { id } = useParams();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const loadProblemStatement = async () => {
@@ -54,6 +57,8 @@ const Description = () => {
   if (!assignment) {
     return <div>Assignment not found</div>;
   }
+
+  dispatch(setSelectedAssignmentId(assignment._id));
 
   return (
     <div className="problem-content">

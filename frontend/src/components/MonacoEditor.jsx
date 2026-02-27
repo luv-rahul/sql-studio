@@ -62,7 +62,6 @@ const MonacoEditor = () => {
         {(activeTab === "result" || queryResult) && (
           <Result
             data={queryResult}
-            status={queryResult?.success ? "success" : "error"}
           />
         )}
       </div>
