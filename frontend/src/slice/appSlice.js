@@ -6,6 +6,7 @@ const appSlice = createSlice({
     showSideBar: false,
     queryValue: "",
     queryResult: null,
+    selectedAssignment: null,
     selectedAssignmentId: null,
   },
   reducers: {
@@ -18,6 +19,9 @@ const appSlice = createSlice({
     setQueryResult: (state, action) => {
       state.queryResult = action.payload;
     },
+    setSelectedAssignment: (state, action) => {
+      state.selectedAssignment = action.payload;
+    },
     setSelectedAssignmentId: (state, action) => {
       state.selectedAssignmentId = action.payload;
     },
@@ -28,6 +32,7 @@ export const {
   toggleSideBar,
   setQueryValue,
   setQueryResult,
+  setSelectedAssignment,
   setSelectedAssignmentId,
 } = appSlice.actions;
 export default appSlice.reducer;

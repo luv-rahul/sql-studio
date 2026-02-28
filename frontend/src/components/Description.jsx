@@ -1,21 +1,26 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { setSelectedAssignmentId } from "../slice/appSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setSelectedAssignment,
+  setSelectedAssignmentId,
+} from "../slice/appSlice";
 import { BASE_URL } from "../utils/constants";
 
 const Description = () => {
   const [assignment, setAssignment] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  const userId = 123;
+  const { user } = useSelector((store) => store.user);
+  const userId = user._id;
   const { id } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
     const loadProblemStatement = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/assignment/${id}`);
+        const response = await fetch(`${BASE_URL}/assignment/${id}`, {
+          credentials: "include",
+        });
         const data = await response.json();
         setAssignment(data);
       } catch (error) {
@@ -31,6 +36,9 @@ const Description = () => {
   useEffect(() => {
     if (!assignment?._id) return;
 
+    dispatch(setSelectedAssignment(assignment));
+    dispatch(setSelectedAssignmentId(assignment._id));
+
     const loadQueryData = async () => {
       try {
         await fetch(`${BASE_URL}/query/start-assignment`, {
@@ -42,6 +50,7 @@ const Description = () => {
             userId,
             assignmentId: assignment._id,
           }),
+          credentials: "include",
         });
       } catch (error) {
         console.error(error);
@@ -49,7 +58,7 @@ const Description = () => {
     };
 
     loadQueryData();
-  }, [assignment, userId]);
+  }, [assignment, dispatch, userId]);
 
   if (loading) {
     return <div className="loading">Loading Assignment...</div>;
@@ -58,8 +67,6 @@ const Description = () => {
   if (!assignment) {
     return <div>Assignment not found</div>;
   }
-
-  dispatch(setSelectedAssignmentId(assignment._id));
 
   return (
     <div className="problem-content">

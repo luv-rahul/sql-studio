@@ -1,13 +1,33 @@
 import { useNavigate } from "react-router-dom";
-import { assignments } from "../utils/constants";
+import { BASE_URL } from "../utils/constants";
+import { useEffect, useState } from "react";
 
 const Assignments = () => {
   const navigate = useNavigate();
+  const [assignments, setAssignments] = useState([]);
+
+  useEffect(() => {
+    const loadAssignment = async () => {
+      try {
+        const res = await fetch(`${BASE_URL}/assignment/problems/all`, {
+          method: "GET",
+          credentials: "include",
+        });
+        const data = await res.json();
+        setAssignments(data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    loadAssignment();
+  }, []);
 
   return (
     <div className="assignment-container">
       <p>
-        <span className="material-symbols-outlined header-icon">task</span> Your Task
+        <span className="material-symbols-outlined header-icon">task</span> Your
+        Task
       </p>
       <div className="assignment-container-header">
         <h1>Assignment</h1>

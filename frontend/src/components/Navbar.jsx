@@ -12,7 +12,7 @@ const Navbar = () => {
   const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
-  const userId = user?.user._id;
+  const userId = user._id;
   const isRunDisabled = !queryValue?.trim() || !selectedAssignmentId;
 
   const handleRun = async () => {
@@ -31,6 +31,7 @@ const Navbar = () => {
           userId,
           assignmentId: selectedAssignmentId,
         }),
+        credentials: "include",
       });
       const data = await response.json();
       dispatch(setQueryResult(data));

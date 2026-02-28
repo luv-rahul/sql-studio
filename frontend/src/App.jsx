@@ -6,11 +6,24 @@ import Hero from "./components/Hero";
 import Assignments from "./components/Assignments";
 import AuthContainer from "./components/AuthContainer";
 import ProtectedRoute from "./components/ProtectedRoute";
+import {ToastContainer} from "react-toastify";
 
 const AppLayout = () => {
   return (
     <Provider store={appStore}>
       <div className="app">
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <Outlet />
       </div>
     </Provider>

@@ -15,7 +15,9 @@ const ProblemsList = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/assignment/problems/all`);
+        const response = await fetch(`${BASE_URL}/assignment/problems/all`, {
+          credentials: "include",
+        });
         const json = await response.json();
         setProblemsList(json);
       } catch (err) {

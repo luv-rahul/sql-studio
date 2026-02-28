@@ -1,17 +1,51 @@
 import { useEffect, useState } from "react";
 import Editor from "@monaco-editor/react";
 import Result from "./Result";
-import { MONACO_EDITOR_TABS } from "../utils/constants";
+import { BASE_URL, MONACO_EDITOR_TABS } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { setQueryValue } from "../slice/appSlice";
+import Modal from "./Modal";
 
 const MonacoEditor = () => {
   const [activeTab, setActiveTab] = useState("code");
+  const [showModal, setShowModal] = useState(false);
+  const [modalData, setModalData] = useState("");
   const dispatch = useDispatch();
-  const { queryValue, queryResult } = useSelector((store) => store.app);
+  const { queryValue, queryResult, selectedAssignment } = useSelector(
+    (store) => store.app,
+  );
 
   const handleEditorChange = (value) => {
     dispatch(setQueryValue(value));
+  };
+
+  const question = selectedAssignment ?? "";
+
+  const handleHintSearch = async () => {
+    try {
+      setModalData("");
+      setShowModal(true);
+      const response = await fetch(`${BASE_URL}/query/query-hints`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          question,
+          queryValue,
+        }),
+        credentials: "include",
+      });
+      if (response.status === 500) {
+        setShowModal(false);
+        alert("You have exceeded your request limit. Please try again later.");
+        return;
+      }
+      const data = await response.json();
+      setModalData(data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
@@ -32,7 +66,9 @@ const MonacoEditor = () => {
               onClick={() => setActiveTab(tab.id)}
             >
               <span
-                className={`material-symbols-outlined ${activeTab === tab.id ? "code-icon" : "result-icon"}`}
+                className={`material-symbols-outlined ${
+                  activeTab === tab.id ? "code-icon" : "result-icon"
+                }`}
               >
                 {tab.icon}
               </span>
@@ -40,7 +76,7 @@ const MonacoEditor = () => {
             </div>
           ))}
         </div>
-        <div className="ai-btn">
+        <div onClick={handleHintSearch} className="ai-btn">
           <span className="ai-help-text">Hint:</span>
           <span className="material-symbols-outlined ai-help-btn">
             wand_stars
@@ -60,11 +96,15 @@ const MonacoEditor = () => {
         )}
 
         {(activeTab === "result" || queryResult) && (
-          <Result
-            data={queryResult}
-          />
+          <Result data={queryResult} />
         )}
       </div>
+
+      <Modal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        data={modalData}
+      />
     </div>
   );
 };

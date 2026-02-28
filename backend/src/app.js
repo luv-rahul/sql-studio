@@ -1,6 +1,7 @@
 const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const { connectMongo, connectPostgres, pool } = require("./config/database");
 const assignmentRoutes = require("./routes/assignmentRoutes");
 const queryRoutes = require("./routes/queryRoutes");
@@ -14,6 +15,7 @@ app.use(
     credentials: true,
   }),
 );
+app.use(cookieParser());
 app.use(express.json());
 
 app.use("/auth", authRoutes);
