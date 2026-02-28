@@ -233,6 +233,7 @@ th {
 
 .editor-container {
   height: 100%;
+  width: 50vw;
   display: flex;
   flex-direction: column;
   background-color: #1a1a1a;
@@ -794,6 +795,11 @@ th {
   width: 500px;
   height: 300px;
   text-align: center;
+}
+
+.modal p {
+  color: #00c853;
+  text-align: justify;
 }
 
 .modal button {

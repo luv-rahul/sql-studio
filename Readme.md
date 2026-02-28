@@ -2,16 +2,33 @@
 
 A full-stack SQL learning platform with a built-in Monaco editor, test cases, AI hints, and assignment tracking.
 
+**Disclaimer:**
+This project is currently under construction. It may possess bugs and i apologise for that, but i am working on it...
+
+....Trying to give you best experience. 
+Thank you, 
+Regards,
+Rahul
+
 ---
+
+## Some Glimpse of the project
+
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
+![alt text](image-4.png)
+![alt text](image-5.png)
 
 ## 🚀 Tech Stack
 
-| Layer      | Technology          |
-|------------|---------------------|
-| Frontend   | React + Vite        |
-| Backend    | Node.js / Express   |
-| Database   | PostgreSQL + MongoDB|
-| Container  | Docker + Compose    |
+| Layer     | Technology           |
+| --------- | -------------------- |
+| Frontend  | React + Vite         |
+| Backend   | Node.js / Express    |
+| Database  | PostgreSQL + MongoDB |
+| Container | Docker + Compose     |
 
 ---
 
@@ -30,12 +47,12 @@ docker compose up --build
 
 Once running, the services will be available at:
 
-| Service    | URL                      |
-|------------|--------------------------|
-| Frontend   | http://localhost:5000    |
-| Backend    | http://localhost:4000    |
-| PostgreSQL | localhost:5432           |
-| MongoDB    | localhost:27017          |
+| Service    | URL                   |
+| ---------- | --------------------- |
+| Frontend   | http://localhost:5000 |
+| Backend    | http://localhost:4000 |
+| PostgreSQL | localhost:5432        |
+| MongoDB    | localhost:27017       |
 
 ---
 
@@ -142,13 +159,11 @@ sql-studio/
 
 ## 🐛 Common Issues
 
-**Editor not showing text?**
-Make sure `height="100%"` is set on the `<Editor />` component and `.editor-body` has `min-height: 0` in CSS.
-
 **Cannot connect to Postgres/Mongo?**
 Use the service name (e.g., `postgres`, `mongo`) as the host inside Docker — not `localhost`.
 
 **Port already in use?**
+
 ```bash
 # Check what's using the port
 lsof -i :5000
