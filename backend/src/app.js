@@ -6,6 +6,7 @@ const { connectMongo, connectPostgres, pool } = require("./config/database");
 const assignmentRoutes = require("./routes/assignmentRoutes");
 const queryRoutes = require("./routes/queryRoutes");
 const authRoutes = require("./routes/authRoutes");
+const userAssignmentRoutes = require("./routes/userAssignmentRoutes");
 const app = express();
 const port = process.env.PORT;
 
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use("/auth", authRoutes);
 app.use("/assignment", assignmentRoutes);
 app.use("/query", queryRoutes);
+app.use("/user-assignment", userAssignmentRoutes);
 
 app.use("/health", (req, res) => {
   res.status(200).json({ message: "Hello Server!" });

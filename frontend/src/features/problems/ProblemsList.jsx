@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleSideBar } from "../slice/appSlice";
+import { toggleSideBar } from "../../slice/appSlice";
 import { Link } from "react-router-dom";
-import { BASE_URL } from "../utils/constants";
+import { BASE_URL } from "../../utils/constants";
 
 const ProblemsList = () => {
   const [problemsList, setProblemsList] = useState([]);

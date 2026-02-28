@@ -1,7 +1,7 @@
-import MonacoEditor from "../components/MonacoEditor";
-import ProblemStatement from "./ProblemStatement";
+import MonacoEditor from "../editor/MonacoEditor";
+import ProblemStatement from "../../features/problems/ProblemStatement";
 import Navbar from "./Navbar";
-import ProblemsList from "./ProblemsList";
+import ProblemsList from "../../features/problems/ProblemsList";
 
 const Body = () => {
   return (

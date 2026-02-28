@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import logo from "../assets/logo.png";
-import { AVATAR_URL } from "../utils/constants";
-import { setQueryResult, toggleSideBar } from "../slice/appSlice";
+import logo from "../../assets/logo.png";
+import { AVATAR_URL } from "../../utils/constants";
+import { setQueryResult, toggleSideBar } from "../../slice/appSlice";
 import { Link } from "react-router-dom";
-import { BASE_URL } from "../utils/constants";
+import { BASE_URL } from "../../utils/constants";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
-  const { queryValue, selectedAssignmentId } = useSelector(
+  const { queryValue, queryResult, selectedAssignmentId } = useSelector(
     (store) => store.app,
   );
   const { user } = useSelector((store) => store.user);
@@ -40,6 +41,34 @@ const Navbar = () => {
     }
   };
 
+  const handleSubmit = async () => {
+    try {
+      if (queryResult?.correct) {
+        const response = await fetch(
+          `${BASE_URL}/user-assignment/submit/${selectedAssignmentId}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              sqlQuery: queryValue,
+            }),
+            credentials: "include",
+          },
+        );
+        if (response.status == 200) {
+          toast.success("Assignment submitted successfully");
+        } else {
+          toast.error("Something went wrong");
+        }
+      }
+    } catch (error) {
+      alert("Something went wrong");
+      console.log(error);
+    }
+  };
+
   return (
     <div className="navbar">
       <div className="logo-container">
@@ -64,14 +93,19 @@ const Navbar = () => {
           <span className="material-symbols-outlined">play_arrow</span>
         </button>
 
-        <div className="submit-btn btn">
+        <button
+          onClick={handleSubmit}
+          disabled={isRunDisabled}
+          className={`submit-btn btn ${isRunDisabled ? "disabled" : ""}`}
+        >
           <span className="material-symbols-outlined">cloud_upload</span>
           Submit
-        </div>
+        </button>
       </div>
 
       <div className="avatar">
         <img className="avatar-image" src={AVATAR_URL} alt="avatar" />
+        <span>Welcome, {user.firstName}🚀</span>
       </div>
     </div>
   );

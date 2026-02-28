@@ -15,15 +15,11 @@ const createWorkspace = async ({ assignmentId, userId }) => {
       throw new Error("Assignment not found");
     }
 
-    console.log(assignment);
-
     const schemaName = `workspace_${userId}`.toLowerCase();
 
     if (!isSafeIdentifier(schemaName)) {
       throw new Error("Invalid schema name");
     }
-
-    console.log(schemaName);
 
     await client.query("BEGIN");
 

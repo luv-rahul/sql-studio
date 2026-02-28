@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { PROBLEM_STATEMENT_TABS } from "../utils/constants";
-import Description from "./Description";
-import Editorial from "./Editorial";
-import Solutions from "./Solutions";
-import Submissions from "./Submissions";
+import { PROBLEM_STATEMENT_TABS } from "../../utils/constants";
+import Description from "../../features/problems/Description";
+import Editorial from "../problems/Editorial";
+import Solutions from "../dashboard/Solutions";
+import Submissions from "../submissions/Submissions";
 
 const SCREENS = {
   desc: Description,

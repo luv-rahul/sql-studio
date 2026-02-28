@@ -1,12 +1,13 @@
-import Body from "./components/Body";
 import { Provider } from "react-redux";
 import appStore from "./store/appStore";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import Hero from "./components/Hero";
-import Assignments from "./components/Assignments";
-import AuthContainer from "./components/AuthContainer";
-import ProtectedRoute from "./components/ProtectedRoute";
-import {ToastContainer} from "react-toastify";
+import Body from "./components/layout/Body";
+import Hero from "./components/layout/Hero";
+import Assignments from "./features/dashboard/Assignments";
+import AuthContainer from "./features/auth/AuthContainer";
+import ProtectedRoute from "./components/ui/ProtectedRoute";
+import { ToastContainer } from "react-toastify";
+import ErrorPage from "./components/layout/ErrorPage";
 
 const AppLayout = () => {
   return (
@@ -60,6 +61,7 @@ const appRouter = createBrowserRouter([
         ),
       },
     ],
+    errorElement: <ErrorPage />,
   },
 ]);
 

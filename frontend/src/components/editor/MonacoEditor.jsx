@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import Editor from "@monaco-editor/react";
-import Result from "./Result";
-import { BASE_URL, MONACO_EDITOR_TABS } from "../utils/constants";
+import Result from "../../features/submissions/Result";
+import { BASE_URL, MONACO_EDITOR_TABS } from "../../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
-import { setQueryValue } from "../slice/appSlice";
-import Modal from "./Modal";
+import { setQueryValue } from "../../slice/appSlice";
+import Modal from "../ui/Modal";
 
 const MonacoEditor = () => {
   const [activeTab, setActiveTab] = useState("code");

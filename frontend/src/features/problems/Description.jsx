@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setSelectedAssignment,
   setSelectedAssignmentId,
-} from "../slice/appSlice";
-import { BASE_URL } from "../utils/constants";
+} from "../../slice/appSlice";
+import { BASE_URL } from "../../utils/constants";
 
 const Description = () => {
   const [assignment, setAssignment] = useState(null);
@@ -39,25 +39,29 @@ const Description = () => {
     dispatch(setSelectedAssignment(assignment));
     dispatch(setSelectedAssignmentId(assignment._id));
 
-    const loadQueryData = async () => {
+    const initializeAssignment = async () => {
       try {
-        await fetch(`${BASE_URL}/query/start-assignment`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userId,
-            assignmentId: assignment._id,
+        await Promise.all([
+          fetch(`${BASE_URL}/user-assignment/open/${assignment._id}`, {
+            method: "GET",
+            credentials: "include",
           }),
-          credentials: "include",
-        });
+          fetch(`${BASE_URL}/query/start-assignment`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              userId,
+              assignmentId: assignment._id,
+            }),
+            credentials: "include",
+          }),
+        ]);
       } catch (error) {
-        console.error(error);
+        console.error("Error initializing assignment:", error);
       }
     };
 
-    loadQueryData();
+    initializeAssignment();
   }, [assignment, dispatch, userId]);
 
   if (loading) {

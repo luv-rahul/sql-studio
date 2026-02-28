@@ -1,9 +1,9 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../utils/constants";
+import { BASE_URL } from "../../utils/constants";
 import { useDispatch } from "react-redux";
-import { addUser } from "../slice/userSlice";
+import { addUser } from "../../slice/userSlice";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -22,6 +22,7 @@ const Login = () => {
       if (!data) {
         throw new Error(data.message || "Login failed");
       }
+      localStorage.setItem("token", data.token);
       dispatch(addUser(data));
       localStorage.setItem("user", JSON.stringify(data.user));
     } catch (err) {

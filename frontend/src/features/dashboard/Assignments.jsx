@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../utils/constants";
+import { BASE_URL } from "../../utils/constants";
 import { useEffect, useState } from "react";
 
 const Assignments = () => {

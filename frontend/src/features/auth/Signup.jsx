@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { BASE_URL } from "../utils/constants";
+import { BASE_URL } from "../../utils/constants";
 
 const Signup = ({ onSignupSuccess }) => {
   const handleSignup = async ({ firstName, lastName, emailId, password }) => {
