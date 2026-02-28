@@ -4,7 +4,6 @@ export const AVATAR_URL =
 export const PROBLEM_STATEMENT_TABS = [
   { id: "desc", name: "Description", icon: "description" },
   { id: "edit", name: "Editorial", icon: "book" },
-  { id: "sols", name: "Solutions", icon: "science" },
   { id: "subm", name: "Submission", icon: "history" },
 ];
 

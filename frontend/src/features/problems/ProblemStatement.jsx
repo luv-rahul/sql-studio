@@ -8,7 +8,6 @@ import Submissions from "../submissions/Submissions";
 const SCREENS = {
   desc: Description,
   edit: Editorial,
-  sols: Solutions,
   subm: Submissions,
 };
 

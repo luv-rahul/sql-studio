@@ -87,7 +87,6 @@ const MonacoEditor = () => {
       <div className="editor-body">
         {activeTab === "code" && (
           <Editor
-            width="50vw"
             theme="vs-dark"
             defaultLanguage="sql"
             defaultValue={queryValue}
