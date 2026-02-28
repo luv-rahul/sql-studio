@@ -690,3 +690,118 @@ th {
 .table-section {
   padding: 0 20px;
 }
+
+/* Full page background */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("https://images.unsplash.com/photo-1671159593357-ee577a598f71?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZGFyayUyMGdyYWRpZW50fGVufDB8fDB8fHww")
+    center / cover no-repeat;
+}
+
+/* Card */
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 40px 30px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+/* Form */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.auth-form h3 {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  text-decoration: underline;
+}
+
+/* Inputs */
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-container label {
+  font-size: 14px;
+  color: #ddd;
+}
+
+.input-container input {
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  transition: 0.3s;
+  background-color: #3f3f3f;
+  color: white;
+}
+
+/* Button */
+.auth-btn {
+  margin-top: 10px;
+  height: 40px;
+  border-radius: 25px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #2f2f2f;
+  color: white;
+  transition: 0.3s ease;
+}
+
+.auth-btn:hover {
+  background-color: #3a3a3a;
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Toggle text */
+.auth-toggle {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.auth-toggle span {
+  color: #4facfe;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-toggle span:hover {
+  text-decoration: underline;
+  color: #00f2fe;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .auth-card {
+    padding: 30px 20px;
+  }
+}
+
+.error {
+  color: #ff4d4d;
+  font-size: 12px;
+  margin-top: 4px;
+}

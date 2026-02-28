@@ -3,15 +3,16 @@ import logo from "../assets/logo.png";
 import { AVATAR_URL } from "../utils/constants";
 import { setQueryResult, toggleSideBar } from "../slice/appSlice";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "../utils/constants";
 
 const Navbar = () => {
   const { queryValue, selectedAssignmentId } = useSelector(
     (store) => store.app,
   );
+  const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
-  console.log(queryValue);
-  const userId = 123;
 
+  const userId = user?.user._id;
   const isRunDisabled = !queryValue?.trim() || !selectedAssignmentId;
 
   const handleRun = async () => {
@@ -20,20 +21,17 @@ const Navbar = () => {
       return;
     }
     try {
-      const response = await fetch(
-        "http://localhost:4000/query/execute-query",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            query: queryValue,
-            userId,
-            assignmentId: selectedAssignmentId,
-          }),
+      const response = await fetch(`${BASE_URL}/query/execute-query`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify({
+          query: queryValue,
+          userId,
+          assignmentId: selectedAssignmentId,
+        }),
+      });
       const data = await response.json();
       dispatch(setQueryResult(data));
     } catch (error) {

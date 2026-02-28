@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSelectedAssignmentId } from "../slice/appSlice";
+import { BASE_URL } from "../utils/constants";
 
 const Description = () => {
   const [assignment, setAssignment] = useState(null);
@@ -14,7 +15,7 @@ const Description = () => {
   useEffect(() => {
     const loadProblemStatement = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/assignment/${id}`);
+        const response = await fetch(`${BASE_URL}/assignment/${id}`);
         const data = await response.json();
         setAssignment(data);
       } catch (error) {
@@ -32,7 +33,7 @@ const Description = () => {
 
     const loadQueryData = async () => {
       try {
-        await fetch("http://localhost:4000/query/start-assignment", {
+        await fetch(`${BASE_URL}/query/start-assignment`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

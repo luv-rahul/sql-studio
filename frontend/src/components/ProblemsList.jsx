@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleSideBar } from "../slice/appSlice";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "../utils/constants";
 
 const ProblemsList = () => {
   const [problemsList, setProblemsList] = useState([]);
@@ -14,9 +15,7 @@ const ProblemsList = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:4000/assignment/problems/all",
-        );
+        const response = await fetch(`${BASE_URL}/assignment/problems/all`);
         const json = await response.json();
         setProblemsList(json);
       } catch (err) {

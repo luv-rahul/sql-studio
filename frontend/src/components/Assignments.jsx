@@ -7,7 +7,7 @@ const Assignments = () => {
   return (
     <div className="assignment-container">
       <p>
-        <span class="material-symbols-outlined header-icon">task</span> Your Task
+        <span className="material-symbols-outlined header-icon">task</span> Your Task
       </p>
       <div className="assignment-container-header">
         <h1>Assignment</h1>

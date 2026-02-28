@@ -1135,3 +1135,5 @@ export const assignments = [
     __v: 0,
   },
 ];
+
+export const BASE_URL = "http://localhost:4000";

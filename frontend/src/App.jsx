@@ -4,6 +4,8 @@ import appStore from "./store/appStore";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Hero from "./components/Hero";
 import Assignments from "./components/Assignments";
+import AuthContainer from "./components/AuthContainer";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const AppLayout = () => {
   return (
@@ -25,12 +27,24 @@ const appRouter = createBrowserRouter([
         element: <Hero />,
       },
       {
+        path: "/auth",
+        element: <AuthContainer />,
+      },
+      {
         path: "/assignment/practice",
-        element: <Assignments />,
+        element: (
+          <ProtectedRoute>
+            <Assignments />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/assignment/practice/:id/:slug",
-        element: <Body />,
+        element: (
+          <ProtectedRoute>
+            <Body />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
