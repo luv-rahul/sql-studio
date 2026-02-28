@@ -1,269 +1,162 @@
-# SQL Studio
+# 🗄️ SQL Studio
 
-## Frontend
+A full-stack SQL learning platform with a built-in Monaco editor, test cases, AI hints, and assignment tracking.
 
-**Create Project**
+---
 
-- npm create vite@latest
+## 🚀 Tech Stack
 
-**Intialize Docker File**
+| Layer      | Technology          |
+|------------|---------------------|
+| Frontend   | React + Vite        |
+| Backend    | Node.js / Express   |
+| Database   | PostgreSQL + MongoDB|
+| Container  | Docker + Compose    |
 
-```
-FROM node:20
+---
 
-WORKDIR /app
+## 📦 Running with Docker
 
-COPY package*.json ./
-RUN npm install
+Make sure you have **Docker** and **Docker Compose** installed.
 
-COPY . .
+```bash
+# Clone the repo
+git clone https://github.com/luv-rahul/sql-studio
+cd sql-studio
 
-EXPOSE 5173
-
-CMD ["npm", "run", "dev", "--", "--host"]
-```
-
-Navbar.jsx
-
-```jsx
-import logo from "../assets/logo.png";
-import { AVATAR_URL } from "../constants/constants";
-
-const Navbar = () => {
-  return (
-    <div className="navbar">
-      <div className="logo-container">
-        <img className="logo" src={logo} alt="logo" />
-        <h1 className="logo-header">SQL Studio</h1>
-      </div>
-
-      <div className="btn-container">
-        <div className="run-btn btn">
-          <span className="material-symbols-outlined">play_arrow</span>
-        </div>
-
-        <div className="submit-btn btn">
-          <span className="material-symbols-outlined">cloud_upload</span>
-          Submit
-        </div>
-      </div>
-
-      <div className="avatar">
-        <img className="avatar-image" src={AVATAR_URL} alt="avatar" />
-      </div>
-    </div>
-  );
-};
-
-export default Navbar;
+# Start all services
+docker compose up --build
 ```
 
-index.css
+Once running, the services will be available at:
 
-```css
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 15px;
-  background-color: #1a1a1a;
-}
+| Service    | URL                      |
+|------------|--------------------------|
+| Frontend   | http://localhost:5000    |
+| Backend    | http://localhost:4000    |
+| PostgreSQL | localhost:5432           |
+| MongoDB    | localhost:27017          |
 
-.logo-container {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
+---
 
-.logo {
-  height: 30px;
-  width: 30px;
-}
+## 🐳 Docker Services Overview
 
-.logo-header {
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.btn-container {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.btn {
-  border: 1px solid #2c2c2c;
-  border-radius: 3px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-}
-
-.run-btn {
-  padding: 2px 10px;
-  color: #bdbdbd;
-  background-color: #2a2a2a;
-}
-
-.run-btn:hover {
-  background-color: #3a3a3a;
-  color: white;
-}
-
-.submit-btn {
-  padding: 2px 15px;
-  color: #00c853;
-  background-color: #2a2a2a;
-}
-
-.submit-btn:hover {
-  background-color: #3a3a3a;
-}
-
-.avatar {
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 1px solid #2c2c2c;
-}
-
-.avatar-image {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
 ```
-
-Body.jsx
-
-```jsx
-import MonacoEditor from "../components/MonacoEditor";
-import ProblemStatement from "./ProblemStatement";
-import Result from "./Result";
-
-const Body = () => {
-  return (
-    <div className="body">
-      <div className="problem-statement">
-        <ProblemStatement />
-      </div>
-      <div className="editor-view">
-        <MonacoEditor />
-      </div>
-    </div>
-  );
-};
-
-export default Body;
-```
-
-index.css
-
-```css
-.body {
-  display: flex;
-  margin: 10px;
-  border-radius: 8px;
-  height: 90vh;
-}
-
-.problem-statement {
-  width: 50%;
-  margin-right: 10px;
-}
+sql-studio/
+├── frontend      → React app         (port 5000)
+├── backend       → Express API       (port 4000)
+├── postgres      → PostgreSQL DB     (port 5432)
+└── mongo         → MongoDB           (port 27017)
 ```
 
 ---
 
-## Backend
+## ⚙️ Environment Variables
 
-**Create Project**
+Create a `.env` file in the `backend/` directory:
 
-- npm init -y
-- npm i express
-- npm i dotenv
+```env
+# Server
+PORT=4000
 
-app.js
+# PostgreSQL
+PG_HOST=postgres
+PG_PORT=5432
+PG_USER=your_pg_user
+PG_PASSWORD=your_pg_password
+PG_DATABASE=ciphersqlstudio
 
-```js
-const express = require("express");
-const app = express();
-require("dotenv").config();
-const port = process.env.PORT;
+# MongoDB
+MONGO_URI=mongodb://mongo:27017/ciphersqlstudio
 
-app.use("/", (req, res) => {
-  res.send("Hello Backend!");
-});
-
-app.listen(port, () => {
-  console.log(`Server is running on ${port}...`);
-});
+# Auth / Session
+JSON_WEB_TOKEN_SECRET_KEY=your_secret_key
+GOOGLE_GENAI_KEY=your_secret_key
 ```
 
-**Initialize Dockerfile**
+> ⚠️ Never commit your `.env` file. Add it to `.gitignore`.
 
-```
-FROM node:20
+---
 
-WORKDIR /app
+## 🛑 Stopping the App
 
-COPY package*.json ./
-RUN npm install
+```bash
+# Stop all containers
+docker compose down
 
-COPY . .
-
-EXPOSE 3000
-
-CMD ["npm", "run", "dev"]
+# Stop and remove volumes (wipes DB data)
+docker compose down -v
 ```
 
-## Docker Compose
+---
+
+## 🔄 Rebuilding After Changes
+
+```bash
+docker compose up --build
+```
+
+---
+
+## 📁 Project Structure
 
 ```
-services:
-  backend:
-    build: ./backend
-    ports:
-      - "3000:3000"
-    depends_on:
-      - postgres
-      - mongo
-    env_file:
-      - ./backend/.env
-
-  frontend:
-    build: ./frontend
-    ports:
-      - "5000:5000"
-    depends_on:
-      - backend
-
-  postgres:
-    image: postgres:16-alpine
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-
-  mongo:
-    image: mongo:6
-    ports:
-      - "27017:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
-    volumes:
-      - mongodata:/data/db
-
-volumes:
-  pgdata:
-  mongodata:
-
+sql-studio/
+├── frontend/
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── features/
+│   │   ├── slice/
+│   │   ├── store/
+│   │   └── utils/
+│   │   └── App.jsx
+│   │   └── index.css
+│   │   └── main.jsx
+│   └── Dockerfile
+├── backend/
+│   ├── config/
+│   ├── controllers/
+│   ├── middlewares/
+│   ├── models/
+│   ├── routes/
+│   ├── services/
+│   ├── utils/
+│   ├── app.js/
+│   └── Dockerfile
+├── docker-compose.yml
+└── README.md
 ```
+
+---
+
+## 🧠 Features
+
+- 📝 Monaco SQL Editor with syntax highlighting
+- ✅ Test case runner with pass/fail results
+- 💡 AI-powered hints for assignments
+- 📋 Assignment tracker with difficulty levels
+- 🔐 Auth with session management
+
+---
+
+## 🐛 Common Issues
+
+**Editor not showing text?**
+Make sure `height="100%"` is set on the `<Editor />` component and `.editor-body` has `min-height: 0` in CSS.
+
+**Cannot connect to Postgres/Mongo?**
+Use the service name (e.g., `postgres`, `mongo`) as the host inside Docker — not `localhost`.
+
+**Port already in use?**
+```bash
+# Check what's using the port
+lsof -i :5000
+lsof -i :4000
+```
+
+---
+
+## 👨‍💻 Author
+
+Built with ❤️ — Rahul
