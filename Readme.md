@@ -34,7 +34,7 @@ Rahul
 
 ## 📦 Running with Docker
 
-Make sure you have **Docker** and **Docker Compose** installed.
+Make sure you have **Docker** and **Docker Desktop** installed.
 
 ```bash
 # Clone the repo
