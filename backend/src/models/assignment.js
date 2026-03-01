@@ -1,65 +1,50 @@
 const mongoose = require("mongoose");
 
-//
-// Column Schema (same as before)
-//
 const ColumnSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  type: { type: String, required: true }, // INT, VARCHAR, DATE, etc.
+  type: { type: String, required: true }, 
   enumValues: { type: [String], default: [] },
   isPrimaryKey: { type: Boolean, default: false },
 });
 
-//
-// Table Schema (same as before)
-//
 const TableSchema = new mongoose.Schema({
   name: { type: String, required: true },
   columns: [ColumnSchema],
   rows: { type: [[mongoose.Schema.Types.Mixed]], default: [] },
 });
 
-//
-// Expected Output Schema
-//
 const OutputSchema = new mongoose.Schema({
   columns: [{ type: String }],
   rows: { type: [[mongoose.Schema.Types.Mixed]], default: [] },
 });
 
-//
-// Test Case Schema
-//
+
 const TestCaseSchema = new mongoose.Schema({
-  inputTables: [TableSchema], // Tables for this test case
+  inputTables: [TableSchema],
   expectedOutput: OutputSchema,
-  isHidden: { type: Boolean, default: false }, // hidden for evaluation
+  isHidden: { type: Boolean, default: false },
 });
 
-//
-// Main Assignment / Problem Schema (LeetCode Style)
-//
 const AssignmentSchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
-    slug: { type: String, unique: true }, // URL-friendly, e.g., second-highest-salary
+    slug: { type: String, unique: true }, 
     difficulty: {
       type: String,
       enum: ["easy", "medium", "hard"],
       default: "easy",
     },
     description: { type: String, required: true },
-    constraints: { type: String }, // Optional constraints text
-    explanation: { type: String }, // Optional solution explanation
-    tags: [{ type: String }], // ["JOIN", "GROUP BY", "Subquery", "Window Function"]
-
-    examples: [TestCaseSchema], // Visible example test cases
-    hiddenTestCases: [TestCaseSchema], // Hidden evaluation test cases
+    constraints: { type: String }, 
+    explanation: { type: String },
+    tags: [{ type: String }], 
+    examples: [TestCaseSchema],
+    hiddenTestCases: [TestCaseSchema], 
 
     acceptanceRate: { type: Number, default: 0 },
     totalSubmissions: { type: Number, default: 0 },
     totalAccepted: { type: Number, default: 0 },
-    order: { type: Number }, // For ordering problems in platform
+    order: { type: Number }, 
   },
   { timestamps: true },
 );

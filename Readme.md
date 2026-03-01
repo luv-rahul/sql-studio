@@ -1,9 +1,9 @@
-# 🗄️ SQL Studio
+# 🗄️ CIPHER SCHOOLS - SQL Studio Assignment
 
 A full-stack SQL learning platform with a built-in Monaco editor, test cases, AI hints, and assignment tracking.
 
 **Disclaimer:**
-This project is currently under construction. It may possess bugs and i apologise for that, but i am working on it...
+This project is currently under construction. It is build as a motive of assignment. It may possess bugs and i apologise for that, but i am working on it...
 
 ....Trying to give you best experience. 
 Thank you, 
