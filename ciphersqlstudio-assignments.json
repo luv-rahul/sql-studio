@@ -1,0 +1,1951 @@
+[{
+  "_id": {
+    "$oid": "69a05b88b87cf07f1496653d"
+  },
+  "title": "Employees Salary Over 5000",
+  "slug": "employees-salary-over-5000",
+  "difficulty": "easy",
+  "description": "Return all employees with salary greater than 5000.",
+  "constraints": "Use only simple WHERE clause",
+  "explanation": "Filter employees table using salary > 5000",
+  "tags": [
+    "Filter",
+    "WHERE"
+  ],
+  "examples": [
+    {
+      "inputTables": [
+        {
+          "name": "Employees",
+          "columns": [
+            {
+              "name": "emp_id",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": true,
+              "_id": {
+                "$oid": "69a05b88b87cf07f14966540"
+              }
+            },
+            {
+              "name": "name",
+              "type": "VARCHAR",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05b88b87cf07f14966541"
+              }
+            },
+            {
+              "name": "salary",
+              "type": "DECIMAL",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05b88b87cf07f14966542"
+              }
+            }
+          ],
+          "rows": [
+            [
+              1,
+              "Alice",
+              4500
+            ],
+            [
+              2,
+              "Bob",
+              6000
+            ],
+            [
+              3,
+              "Charlie",
+              5500
+            ]
+          ],
+          "_id": {
+            "$oid": "69a05b88b87cf07f1496653f"
+          }
+        }
+      ],
+      "expectedOutput": {
+        "columns": [
+          "emp_id",
+          "name",
+          "salary"
+        ],
+        "rows": [
+          [
+            2,
+            "Bob",
+            6000
+          ],
+          [
+            3,
+            "Charlie",
+            5500
+          ]
+        ],
+        "_id": {
+          "$oid": "69a05b88b87cf07f14966543"
+        }
+      },
+      "isHidden": false,
+      "_id": {
+        "$oid": "69a05b88b87cf07f1496653e"
+      }
+    }
+  ],
+  "hiddenTestCases": [],
+  "acceptanceRate": 0,
+  "totalSubmissions": 0,
+  "totalAccepted": 0,
+  "createdAt": {
+    "$date": "2026-02-26T14:41:12.491Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-26T14:41:12.491Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a05b95b87cf07f14966545"
+  },
+  "title": "Students From Delhi",
+  "slug": "students-from-delhi",
+  "difficulty": "easy",
+  "description": "Return all students who live in Delhi city.",
+  "constraints": "Simple filter on city column",
+  "explanation": "Use WHERE city='Delhi'",
+  "tags": [
+    "Filter",
+    "WHERE"
+  ],
+  "examples": [
+    {
+      "inputTables": [
+        {
+          "name": "Students",
+          "columns": [
+            {
+              "name": "student_id",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": true,
+              "_id": {
+                "$oid": "69a05b95b87cf07f14966548"
+              }
+            },
+            {
+              "name": "name",
+              "type": "VARCHAR",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05b95b87cf07f14966549"
+              }
+            },
+            {
+              "name": "city",
+              "type": "VARCHAR",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05b95b87cf07f1496654a"
+              }
+            }
+          ],
+          "rows": [
+            [
+              1,
+              "Ankit",
+              "Delhi"
+            ],
+            [
+              2,
+              "Priya",
+              "Mumbai"
+            ],
+            [
+              3,
+              "Riya",
+              "Delhi"
+            ]
+          ],
+          "_id": {
+            "$oid": "69a05b95b87cf07f14966547"
+          }
+        }
+      ],
+      "expectedOutput": {
+        "columns": [
+          "student_id",
+          "name",
+          "city"
+        ],
+        "rows": [
+          [
+            1,
+            "Ankit",
+            "Delhi"
+          ],
+          [
+            3,
+            "Riya",
+            "Delhi"
+          ]
+        ],
+        "_id": {
+          "$oid": "69a05b95b87cf07f1496654b"
+        }
+      },
+      "isHidden": false,
+      "_id": {
+        "$oid": "69a05b95b87cf07f14966546"
+      }
+    }
+  ],
+  "hiddenTestCases": [],
+  "acceptanceRate": 0,
+  "totalSubmissions": 0,
+  "totalAccepted": 0,
+  "createdAt": {
+    "$date": "2026-02-26T14:41:25.489Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-26T14:41:25.489Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a05ba1b87cf07f1496654d"
+  },
+  "title": "Count Total Employees",
+  "slug": "count-total-employees",
+  "difficulty": "easy",
+  "description": "Return total number of employees in the table.",
+  "constraints": "Use COUNT function",
+  "explanation": "Use SELECT COUNT(*) FROM Employees",
+  "tags": [
+    "Aggregate",
+    "COUNT"
+  ],
+  "examples": [
+    {
+      "inputTables": [
+        {
+          "name": "Employees",
+          "columns": [
+            {
+              "name": "emp_id",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": true,
+              "_id": {
+                "$oid": "69a05ba1b87cf07f14966550"
+              }
+            },
+            {
+              "name": "name",
+              "type": "VARCHAR",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05ba1b87cf07f14966551"
+              }
+            }
+          ],
+          "rows": [
+            [
+              1,
+              "A"
+            ],
+            [
+              2,
+              "B"
+            ],
+            [
+              3,
+              "C"
+            ]
+          ],
+          "_id": {
+            "$oid": "69a05ba1b87cf07f1496654f"
+          }
+        }
+      ],
+      "expectedOutput": {
+        "columns": [
+          "total"
+        ],
+        "rows": [
+          [
+            3
+          ]
+        ],
+        "_id": {
+          "$oid": "69a05ba1b87cf07f14966552"
+        }
+      },
+      "isHidden": false,
+      "_id": {
+        "$oid": "69a05ba1b87cf07f1496654e"
+      }
+    }
+  ],
+  "hiddenTestCases": [],
+  "acceptanceRate": 0,
+  "totalSubmissions": 0,
+  "totalAccepted": 0,
+  "createdAt": {
+    "$date": "2026-02-26T14:41:37.665Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-26T14:41:37.665Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a05badb87cf07f14966554"
+  },
+  "title": "Maximum Salary",
+  "slug": "maximum-salary",
+  "difficulty": "easy",
+  "description": "Return the highest salary from Employees table.",
+  "constraints": "Use MAX function",
+  "explanation": "Use SELECT MAX(salary) FROM Employees",
+  "tags": [
+    "Aggregate",
+    "MAX"
+  ],
+  "examples": [
+    {
+      "inputTables": [
+        {
+          "name": "Employees",
+          "columns": [
+            {
+              "name": "emp_id",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": true,
+              "_id": {
+                "$oid": "69a05badb87cf07f14966557"
+              }
+            },
+            {
+              "name": "salary",
+              "type": "DECIMAL",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05badb87cf07f14966558"
+              }
+            }
+          ],
+          "rows": [
+            [
+              1,
+              4000
+            ],
+            [
+              2,
+              6000
+            ],
+            [
+              3,
+              5000
+            ]
+          ],
+          "_id": {
+            "$oid": "69a05badb87cf07f14966556"
+          }
+        }
+      ],
+      "expectedOutput": {
+        "columns": [
+          "max_salary"
+        ],
+        "rows": [
+          [
+            6000
+          ]
+        ],
+        "_id": {
+          "$oid": "69a05badb87cf07f14966559"
+        }
+      },
+      "isHidden": false,
+      "_id": {
+        "$oid": "69a05badb87cf07f14966555"
+      }
+    }
+  ],
+  "hiddenTestCases": [],
+  "acceptanceRate": 0,
+  "totalSubmissions": 0,
+  "totalAccepted": 0,
+  "createdAt": {
+    "$date": "2026-02-26T14:41:49.244Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-26T14:41:49.244Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a05bb7b87cf07f1496655b"
+  },
+  "title": "List All Departments",
+  "slug": "list-all-departments",
+  "difficulty": "easy",
+  "description": "Return all distinct department names from Employees table.",
+  "constraints": "Use DISTINCT keyword",
+  "explanation": "SELECT DISTINCT department FROM Employees",
+  "tags": [
+    "DISTINCT",
+    "SELECT"
+  ],
+  "examples": [
+    {
+      "inputTables": [
+        {
+          "name": "Employees",
+          "columns": [
+            {
+              "name": "emp_id",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": true,
+              "_id": {
+                "$oid": "69a05bb7b87cf07f1496655e"
+              }
+            },
+            {
+              "name": "department",
+              "type": "VARCHAR",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05bb7b87cf07f1496655f"
+              }
+            }
+          ],
+          "rows": [
+            [
+              1,
+              "HR"
+            ],
+            [
+              2,
+              "Engineering"
+            ],
+            [
+              3,
+              "HR"
+            ]
+          ],
+          "_id": {
+            "$oid": "69a05bb7b87cf07f1496655d"
+          }
+        }
+      ],
+      "expectedOutput": {
+        "columns": [
+          "department"
+        ],
+        "rows": [
+          [
+            "HR"
+          ],
+          [
+            "Engineering"
+          ]
+        ],
+        "_id": {
+          "$oid": "69a05bb7b87cf07f14966560"
+        }
+      },
+      "isHidden": false,
+      "_id": {
+        "$oid": "69a05bb7b87cf07f1496655c"
+      }
+    }
+  ],
+  "hiddenTestCases": [],
+  "acceptanceRate": 0,
+  "totalSubmissions": 0,
+  "totalAccepted": 0,
+  "createdAt": {
+    "$date": "2026-02-26T14:41:59.839Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-26T14:41:59.839Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a05c37d636cc0d499366df"
+  },
+  "title": "Second Highest Salary",
+  "slug": "second-highest-salary",
+  "difficulty": "medium",
+  "description": "Write a SQL query to find the second highest distinct salary from the Employees table. If there is no second highest salary, return NULL.",
+  "constraints": "Use LIMIT or subquery to find second highest",
+  "explanation": "Use a subquery or ORDER BY salary DESC with OFFSET 1 to get second highest salary.",
+  "tags": [
+    "Aggregate",
+    "Subquery"
+  ],
+  "examples": [
+    {
+      "inputTables": [
+        {
+          "name": "Employees",
+          "columns": [
+            {
+              "name": "id",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": true,
+              "_id": {
+                "$oid": "69a05c37d636cc0d499366e2"
+              }
+            },
+            {
+              "name": "salary",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05c37d636cc0d499366e3"
+              }
+            }
+          ],
+          "rows": [
+            [
+              1,
+              100
+            ],
+            [
+              2,
+              200
+            ],
+            [
+              3,
+              300
+            ]
+          ],
+          "_id": {
+            "$oid": "69a05c37d636cc0d499366e1"
+          }
+        }
+      ],
+      "expectedOutput": {
+        "columns": [
+          "SecondHighestSalary"
+        ],
+        "rows": [
+          [
+            200
+          ]
+        ],
+        "_id": {
+          "$oid": "69a05c37d636cc0d499366e4"
+        }
+      },
+      "isHidden": false,
+      "_id": {
+        "$oid": "69a05c37d636cc0d499366e0"
+      }
+    }
+  ],
+  "hiddenTestCases": [],
+  "acceptanceRate": 0,
+  "totalSubmissions": 0,
+  "totalAccepted": 0,
+  "createdAt": {
+    "$date": "2026-02-26T14:44:07.228Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-26T14:44:07.228Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a05c427440cb1eb0886687"
+  },
+  "title": "Customers Who Never Order",
+  "slug": "customers-who-never-order",
+  "difficulty": "medium",
+  "description": "Write a SQL query to find all customers who never placed any orders.",
+  "constraints": "Use LEFT JOIN or NOT IN",
+  "explanation": "Join Customers with Orders and filter NULL orders or use NOT IN.",
+  "tags": [
+    "JOIN",
+    "LEFT JOIN",
+    "NULL check"
+  ],
+  "examples": [
+    {
+      "inputTables": [
+        {
+          "name": "Customers",
+          "columns": [
+            {
+              "name": "id",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": true,
+              "_id": {
+                "$oid": "69a05c427440cb1eb088668a"
+              }
+            },
+            {
+              "name": "name",
+              "type": "VARCHAR",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05c427440cb1eb088668b"
+              }
+            }
+          ],
+          "rows": [
+            [
+              1,
+              "Joe"
+            ],
+            [
+              2,
+              "Henry"
+            ],
+            [
+              3,
+              "Sam"
+            ],
+            [
+              4,
+              "Max"
+            ]
+          ],
+          "_id": {
+            "$oid": "69a05c427440cb1eb0886689"
+          }
+        },
+        {
+          "name": "Orders",
+          "columns": [
+            {
+              "name": "id",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": true,
+              "_id": {
+                "$oid": "69a05c427440cb1eb088668d"
+              }
+            },
+            {
+              "name": "customerId",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05c427440cb1eb088668e"
+              }
+            }
+          ],
+          "rows": [
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              1
+            ]
+          ],
+          "_id": {
+            "$oid": "69a05c427440cb1eb088668c"
+          }
+        }
+      ],
+      "expectedOutput": {
+        "columns": [
+          "Customers"
+        ],
+        "rows": [
+          [
+            "Henry"
+          ],
+          [
+            "Max"
+          ]
+        ],
+        "_id": {
+          "$oid": "69a05c427440cb1eb088668f"
+        }
+      },
+      "isHidden": false,
+      "_id": {
+        "$oid": "69a05c427440cb1eb0886688"
+      }
+    }
+  ],
+  "hiddenTestCases": [],
+  "acceptanceRate": 0,
+  "totalSubmissions": 0,
+  "totalAccepted": 0,
+  "createdAt": {
+    "$date": "2026-02-26T14:44:18.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-26T14:44:18.873Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a05c4cf14ce5b4be283c5f"
+  },
+  "title": "Department Highest Salary",
+  "slug": "department-highest-salary",
+  "difficulty": "medium",
+  "description": "Find employees who have the highest salary in each department.",
+  "constraints": "Use GROUP BY and JOIN to find department-wise highest salary",
+  "explanation": "Use a subquery to get max salary per department and join with Employee table.",
+  "tags": [
+    "GROUP BY",
+    "JOIN",
+    "MAX"
+  ],
+  "examples": [
+    {
+      "inputTables": [
+        {
+          "name": "Employee",
+          "columns": [
+            {
+              "name": "id",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": true,
+              "_id": {
+                "$oid": "69a05c4cf14ce5b4be283c62"
+              }
+            },
+            {
+              "name": "name",
+              "type": "VARCHAR",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05c4cf14ce5b4be283c63"
+              }
+            },
+            {
+              "name": "salary",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05c4cf14ce5b4be283c64"
+              }
+            },
+            {
+              "name": "departmentId",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05c4cf14ce5b4be283c65"
+              }
+            }
+          ],
+          "rows": [
+            [
+              1,
+              "Joe",
+              70000,
+              1
+            ],
+            [
+              2,
+              "Jim",
+              90000,
+              1
+            ],
+            [
+              3,
+              "Henry",
+              80000,
+              2
+            ],
+            [
+              4,
+              "Sam",
+              60000,
+              2
+            ]
+          ],
+          "_id": {
+            "$oid": "69a05c4cf14ce5b4be283c61"
+          }
+        },
+        {
+          "name": "Department",
+          "columns": [
+            {
+              "name": "id",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": true,
+              "_id": {
+                "$oid": "69a05c4cf14ce5b4be283c67"
+              }
+            },
+            {
+              "name": "name",
+              "type": "VARCHAR",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05c4cf14ce5b4be283c68"
+              }
+            }
+          ],
+          "rows": [
+            [
+              1,
+              "IT"
+            ],
+            [
+              2,
+              "Sales"
+            ]
+          ],
+          "_id": {
+            "$oid": "69a05c4cf14ce5b4be283c66"
+          }
+        }
+      ],
+      "expectedOutput": {
+        "columns": [
+          "Department",
+          "Employee",
+          "Salary"
+        ],
+        "rows": [
+          [
+            "IT",
+            "Jim",
+            90000
+          ],
+          [
+            "Sales",
+            "Henry",
+            80000
+          ]
+        ],
+        "_id": {
+          "$oid": "69a05c4cf14ce5b4be283c69"
+        }
+      },
+      "isHidden": false,
+      "_id": {
+        "$oid": "69a05c4cf14ce5b4be283c60"
+      }
+    }
+  ],
+  "hiddenTestCases": [],
+  "acceptanceRate": 0,
+  "totalSubmissions": 0,
+  "totalAccepted": 0,
+  "createdAt": {
+    "$date": "2026-02-26T14:44:28.426Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-26T14:44:28.426Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a05c58655ec5aaa0f6ffec"
+  },
+  "title": "Top 3 Salaries Per Department",
+  "slug": "top-3-salaries-per-department",
+  "difficulty": "medium",
+  "description": "Return the top 3 highest paid employees in each department using window functions.",
+  "constraints": "Use RANK() or DENSE_RANK()",
+  "explanation": "Partition by department and order by salary DESC, then filter rank <=3.",
+  "tags": [
+    "WINDOW FUNCTION",
+    "RANK",
+    "PARTITION BY"
+  ],
+  "examples": [
+    {
+      "inputTables": [
+        {
+          "name": "Employees",
+          "columns": [
+            {
+              "name": "id",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": true,
+              "_id": {
+                "$oid": "69a05c58655ec5aaa0f6ffef"
+              }
+            },
+            {
+              "name": "name",
+              "type": "VARCHAR",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05c58655ec5aaa0f6fff0"
+              }
+            },
+            {
+              "name": "salary",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05c58655ec5aaa0f6fff1"
+              }
+            },
+            {
+              "name": "departmentId",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05c58655ec5aaa0f6fff2"
+              }
+            }
+          ],
+          "rows": [
+            [
+              1,
+              "A",
+              9000,
+              1
+            ],
+            [
+              2,
+              "B",
+              8500,
+              1
+            ],
+            [
+              3,
+              "C",
+              8000,
+              1
+            ],
+            [
+              4,
+              "D",
+              7500,
+              1
+            ],
+            [
+              5,
+              "E",
+              9200,
+              2
+            ],
+            [
+              6,
+              "F",
+              8800,
+              2
+            ],
+            [
+              7,
+              "G",
+              8700,
+              2
+            ]
+          ],
+          "_id": {
+            "$oid": "69a05c58655ec5aaa0f6ffee"
+          }
+        }
+      ],
+      "expectedOutput": {
+        "columns": [
+          "departmentId",
+          "name",
+          "salary"
+        ],
+        "rows": [
+          [
+            1,
+            "A",
+            9000
+          ],
+          [
+            1,
+            "B",
+            8500
+          ],
+          [
+            1,
+            "C",
+            8000
+          ],
+          [
+            2,
+            "E",
+            9200
+          ],
+          [
+            2,
+            "F",
+            8800
+          ],
+          [
+            2,
+            "G",
+            8700
+          ]
+        ],
+        "_id": {
+          "$oid": "69a05c58655ec5aaa0f6fff3"
+        }
+      },
+      "isHidden": false,
+      "_id": {
+        "$oid": "69a05c58655ec5aaa0f6ffed"
+      }
+    }
+  ],
+  "hiddenTestCases": [],
+  "acceptanceRate": 0,
+  "totalSubmissions": 0,
+  "totalAccepted": 0,
+  "createdAt": {
+    "$date": "2026-02-26T14:44:40.511Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-26T14:44:40.511Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a05c63edc710911e3679f7"
+  },
+  "title": "Rising Monthly Revenue",
+  "slug": "rising-monthly-revenue",
+  "difficulty": "medium",
+  "description": "Calculate total revenue per month and return months where revenue increased compared to previous month.",
+  "constraints": "Use SUM() and window functions",
+  "explanation": "Aggregate revenue by month and compare with previous month using LAG()",
+  "tags": [
+    "Aggregate",
+    "DATE",
+    "WINDOW FUNCTION"
+  ],
+  "examples": [
+    {
+      "inputTables": [
+        {
+          "name": "Orders",
+          "columns": [
+            {
+              "name": "id",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": true,
+              "_id": {
+                "$oid": "69a05c63edc710911e3679fa"
+              }
+            },
+            {
+              "name": "order_date",
+              "type": "DATE",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05c63edc710911e3679fb"
+              }
+            },
+            {
+              "name": "amount",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05c63edc710911e3679fc"
+              }
+            }
+          ],
+          "rows": [
+            [
+              1,
+              "2024-01-10",
+              5000
+            ],
+            [
+              2,
+              "2024-01-20",
+              3000
+            ],
+            [
+              3,
+              "2024-02-15",
+              12000
+            ],
+            [
+              4,
+              "2024-03-10",
+              7000
+            ],
+            [
+              5,
+              "2024-03-25",
+              6000
+            ]
+          ],
+          "_id": {
+            "$oid": "69a05c63edc710911e3679f9"
+          }
+        }
+      ],
+      "expectedOutput": {
+        "columns": [
+          "month",
+          "total_revenue"
+        ],
+        "rows": [
+          [
+            "2024-02",
+            12000
+          ],
+          [
+            "2024-03",
+            13000
+          ]
+        ],
+        "_id": {
+          "$oid": "69a05c63edc710911e3679fd"
+        }
+      },
+      "isHidden": false,
+      "_id": {
+        "$oid": "69a05c63edc710911e3679f8"
+      }
+    }
+  ],
+  "hiddenTestCases": [],
+  "acceptanceRate": 0,
+  "totalSubmissions": 0,
+  "totalAccepted": 0,
+  "createdAt": {
+    "$date": "2026-02-26T14:44:51.375Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-26T14:44:51.375Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a05cbe9f03b04a42c540af"
+  },
+  "title": "Employees With Nth Highest Salary",
+  "slug": "employees-with-nth-highest-salary",
+  "difficulty": "hard",
+  "description": "Write a SQL query to find employees having the Nth highest salary. N can vary as input.",
+  "constraints": "Use DENSE_RANK() or ROW_NUMBER()",
+  "explanation": "Partition by salary ordered DESC and filter rank = N",
+  "tags": [
+    "Subquery",
+    "Rank",
+    "Dynamic"
+  ],
+  "examples": [
+    {
+      "inputTables": [
+        {
+          "name": "Employees",
+          "columns": [
+            {
+              "name": "id",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": true,
+              "_id": {
+                "$oid": "69a05cbe9f03b04a42c540b2"
+              }
+            },
+            {
+              "name": "name",
+              "type": "VARCHAR",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05cbe9f03b04a42c540b3"
+              }
+            },
+            {
+              "name": "salary",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05cbe9f03b04a42c540b4"
+              }
+            }
+          ],
+          "rows": [
+            [
+              1,
+              "Alice",
+              5000
+            ],
+            [
+              2,
+              "Bob",
+              7000
+            ],
+            [
+              3,
+              "Charlie",
+              7000
+            ],
+            [
+              4,
+              "David",
+              6000
+            ]
+          ],
+          "_id": {
+            "$oid": "69a05cbe9f03b04a42c540b1"
+          }
+        }
+      ],
+      "expectedOutput": {
+        "columns": [
+          "name",
+          "salary"
+        ],
+        "rows": [
+          [
+            "David",
+            6000
+          ]
+        ],
+        "_id": {
+          "$oid": "69a05cbe9f03b04a42c540b5"
+        }
+      },
+      "isHidden": false,
+      "_id": {
+        "$oid": "69a05cbe9f03b04a42c540b0"
+      }
+    }
+  ],
+  "hiddenTestCases": [],
+  "acceptanceRate": 0,
+  "totalSubmissions": 0,
+  "totalAccepted": 0,
+  "createdAt": {
+    "$date": "2026-02-26T14:46:22.093Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-26T14:46:22.093Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a05d571a23482bec04122a"
+  },
+  "title": "Consecutive Orders by Customer",
+  "slug": "consecutive-orders-by-customer",
+  "difficulty": "hard",
+  "description": "Find customers who placed orders on consecutive days.",
+  "constraints": "Use LAG() to compare previous order dates",
+  "explanation": "Partition by customer and order by date, compare current and previous order dates",
+  "tags": [
+    "WINDOW FUNCTION",
+    "LAG",
+    "DATE"
+  ],
+  "examples": [
+    {
+      "inputTables": [
+        {
+          "name": "Orders",
+          "columns": [
+            {
+              "name": "id",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": true,
+              "_id": {
+                "$oid": "69a05d571a23482bec04122d"
+              }
+            },
+            {
+              "name": "customerId",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05d571a23482bec04122e"
+              }
+            },
+            {
+              "name": "order_date",
+              "type": "DATE",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05d571a23482bec04122f"
+              }
+            }
+          ],
+          "rows": [
+            [
+              1,
+              1,
+              "2024-01-01"
+            ],
+            [
+              2,
+              1,
+              "2024-01-02"
+            ],
+            [
+              3,
+              2,
+              "2024-01-01"
+            ],
+            [
+              4,
+              2,
+              "2024-01-03"
+            ]
+          ],
+          "_id": {
+            "$oid": "69a05d571a23482bec04122c"
+          }
+        }
+      ],
+      "expectedOutput": {
+        "columns": [
+          "customerId"
+        ],
+        "rows": [
+          [
+            1
+          ]
+        ],
+        "_id": {
+          "$oid": "69a05d571a23482bec041230"
+        }
+      },
+      "isHidden": false,
+      "_id": {
+        "$oid": "69a05d571a23482bec04122b"
+      }
+    }
+  ],
+  "hiddenTestCases": [],
+  "acceptanceRate": 0,
+  "totalSubmissions": 0,
+  "totalAccepted": 0,
+  "createdAt": {
+    "$date": "2026-02-26T14:48:55.125Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-26T14:48:55.125Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a05d660abba64a868fade3"
+  },
+  "title": "Median Salary Per Department",
+  "slug": "median-salary-per-department",
+  "difficulty": "hard",
+  "description": "Find the median salary in each department.",
+  "constraints": "Use window functions and ranking",
+  "explanation": "Partition by department and compute row_number to select median",
+  "tags": [
+    "Window Function",
+    "MEDIAN",
+    "Partition"
+  ],
+  "examples": [
+    {
+      "inputTables": [
+        {
+          "name": "Employees",
+          "columns": [
+            {
+              "name": "id",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": true,
+              "_id": {
+                "$oid": "69a05d660abba64a868fade6"
+              }
+            },
+            {
+              "name": "name",
+              "type": "VARCHAR",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05d660abba64a868fade7"
+              }
+            },
+            {
+              "name": "salary",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05d660abba64a868fade8"
+              }
+            },
+            {
+              "name": "departmentId",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05d660abba64a868fade9"
+              }
+            }
+          ],
+          "rows": [
+            [
+              1,
+              "A",
+              3000,
+              1
+            ],
+            [
+              2,
+              "B",
+              4000,
+              1
+            ],
+            [
+              3,
+              "C",
+              5000,
+              1
+            ],
+            [
+              4,
+              "D",
+              6000,
+              2
+            ],
+            [
+              5,
+              "E",
+              7000,
+              2
+            ],
+            [
+              6,
+              "F",
+              8000,
+              2
+            ]
+          ],
+          "_id": {
+            "$oid": "69a05d660abba64a868fade5"
+          }
+        }
+      ],
+      "expectedOutput": {
+        "columns": [
+          "departmentId",
+          "median_salary"
+        ],
+        "rows": [
+          [
+            1,
+            4000
+          ],
+          [
+            2,
+            7000
+          ]
+        ],
+        "_id": {
+          "$oid": "69a05d660abba64a868fadea"
+        }
+      },
+      "isHidden": false,
+      "_id": {
+        "$oid": "69a05d660abba64a868fade4"
+      }
+    }
+  ],
+  "hiddenTestCases": [],
+  "acceptanceRate": 0,
+  "totalSubmissions": 0,
+  "totalAccepted": 0,
+  "createdAt": {
+    "$date": "2026-02-26T14:49:10.318Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-26T14:49:10.318Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a05d76eb9d8910ce9842f6"
+  },
+  "title": "Employees With Salary Above Department Average",
+  "slug": "employees-above-department-average",
+  "difficulty": "hard",
+  "description": "Return all employees whose salary is above the average salary of their department.",
+  "constraints": "Use GROUP BY to calculate department average",
+  "explanation": "Join Employee table with subquery of department averages, filter salary > avg_salary",
+  "tags": [
+    "JOIN",
+    "Aggregate",
+    "Subquery"
+  ],
+  "examples": [
+    {
+      "inputTables": [
+        {
+          "name": "Employee",
+          "columns": [
+            {
+              "name": "id",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": true,
+              "_id": {
+                "$oid": "69a05d76eb9d8910ce9842f9"
+              }
+            },
+            {
+              "name": "name",
+              "type": "VARCHAR",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05d76eb9d8910ce9842fa"
+              }
+            },
+            {
+              "name": "salary",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05d76eb9d8910ce9842fb"
+              }
+            },
+            {
+              "name": "departmentId",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05d76eb9d8910ce9842fc"
+              }
+            }
+          ],
+          "rows": [
+            [
+              1,
+              "A",
+              5000,
+              1
+            ],
+            [
+              2,
+              "B",
+              6000,
+              1
+            ],
+            [
+              3,
+              "C",
+              4000,
+              1
+            ],
+            [
+              4,
+              "D",
+              7000,
+              2
+            ],
+            [
+              5,
+              "E",
+              6000,
+              2
+            ]
+          ],
+          "_id": {
+            "$oid": "69a05d76eb9d8910ce9842f8"
+          }
+        }
+      ],
+      "expectedOutput": {
+        "columns": [
+          "name",
+          "salary",
+          "departmentId"
+        ],
+        "rows": [
+          [
+            "B",
+            6000,
+            1
+          ],
+          [
+            "D",
+            7000,
+            2
+          ]
+        ],
+        "_id": {
+          "$oid": "69a05d76eb9d8910ce9842fd"
+        }
+      },
+      "isHidden": false,
+      "_id": {
+        "$oid": "69a05d76eb9d8910ce9842f7"
+      }
+    }
+  ],
+  "hiddenTestCases": [],
+  "acceptanceRate": 0,
+  "totalSubmissions": 0,
+  "totalAccepted": 0,
+  "createdAt": {
+    "$date": "2026-02-26T14:49:26.795Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-26T14:49:26.795Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a05d839eb2d154cd53c6f5"
+  },
+  "title": "Running Total Revenue Per Customer",
+  "slug": "running-total-revenue-per-customer",
+  "difficulty": "hard",
+  "description": "Compute the running total of revenue for each customer ordered by date.",
+  "constraints": "Use SUM() OVER (PARTITION BY customer ORDER BY date)",
+  "explanation": "Partition by customerId, order by date, use cumulative SUM()",
+  "tags": [
+    "WINDOW FUNCTION",
+    "SUM",
+    "PARTITION BY"
+  ],
+  "examples": [
+    {
+      "inputTables": [
+        {
+          "name": "Orders",
+          "columns": [
+            {
+              "name": "id",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": true,
+              "_id": {
+                "$oid": "69a05d839eb2d154cd53c6f8"
+              }
+            },
+            {
+              "name": "customerId",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05d839eb2d154cd53c6f9"
+              }
+            },
+            {
+              "name": "amount",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05d839eb2d154cd53c6fa"
+              }
+            },
+            {
+              "name": "order_date",
+              "type": "DATE",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05d839eb2d154cd53c6fb"
+              }
+            }
+          ],
+          "rows": [
+            [
+              1,
+              1,
+              100,
+              "2024-01-01"
+            ],
+            [
+              2,
+              1,
+              200,
+              "2024-01-02"
+            ],
+            [
+              3,
+              1,
+              300,
+              "2024-01-03"
+            ],
+            [
+              4,
+              2,
+              150,
+              "2024-01-01"
+            ],
+            [
+              5,
+              2,
+              250,
+              "2024-01-02"
+            ]
+          ],
+          "_id": {
+            "$oid": "69a05d839eb2d154cd53c6f7"
+          }
+        }
+      ],
+      "expectedOutput": {
+        "columns": [
+          "customerId",
+          "order_date",
+          "running_total"
+        ],
+        "rows": [
+          [
+            1,
+            "2024-01-01",
+            100
+          ],
+          [
+            1,
+            "2024-01-02",
+            300
+          ],
+          [
+            1,
+            "2024-01-03",
+            600
+          ],
+          [
+            2,
+            "2024-01-01",
+            150
+          ],
+          [
+            2,
+            "2024-01-02",
+            400
+          ]
+        ],
+        "_id": {
+          "$oid": "69a05d839eb2d154cd53c6fc"
+        }
+      },
+      "isHidden": false,
+      "_id": {
+        "$oid": "69a05d839eb2d154cd53c6f6"
+      }
+    }
+  ],
+  "hiddenTestCases": [],
+  "acceptanceRate": 0,
+  "totalSubmissions": 0,
+  "totalAccepted": 0,
+  "createdAt": {
+    "$date": "2026-02-26T14:49:39.813Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-26T14:49:39.813Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a05e20b1c24d600dbef3c8"
+  },
+  "title": "Running Total Revenue Per Customer",
+  "slug": "running-total-revenue-per",
+  "difficulty": "hard",
+  "description": "Compute the running total of revenue for each customer ordered by date.",
+  "constraints": "Use SUM() OVER (PARTITION BY customer ORDER BY date)",
+  "explanation": "Partition by customerId, order by date, use cumulative SUM()",
+  "tags": [
+    "WINDOW FUNCTION",
+    "SUM",
+    "PARTITION BY"
+  ],
+  "examples": [
+    {
+      "inputTables": [
+        {
+          "name": "Orders",
+          "columns": [
+            {
+              "name": "id",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": true,
+              "_id": {
+                "$oid": "69a05e20b1c24d600dbef3cb"
+              }
+            },
+            {
+              "name": "customerId",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05e20b1c24d600dbef3cc"
+              }
+            },
+            {
+              "name": "amount",
+              "type": "INT",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05e20b1c24d600dbef3cd"
+              }
+            },
+            {
+              "name": "order_date",
+              "type": "DATE",
+              "enumValues": [],
+              "isPrimaryKey": false,
+              "_id": {
+                "$oid": "69a05e20b1c24d600dbef3ce"
+              }
+            }
+          ],
+          "rows": [
+            [
+              1,
+              1,
+              100,
+              "2024-01-01"
+            ],
+            [
+              2,
+              1,
+              200,
+              "2024-01-02"
+            ],
+            [
+              3,
+              1,
+              300,
+              "2024-01-03"
+            ],
+            [
+              4,
+              2,
+              150,
+              "2024-01-01"
+            ],
+            [
+              5,
+              2,
+              250,
+              "2024-01-02"
+            ]
+          ],
+          "_id": {
+            "$oid": "69a05e20b1c24d600dbef3ca"
+          }
+        }
+      ],
+      "expectedOutput": {
+        "columns": [
+          "customerId",
+          "order_date",
+          "running_total"
+        ],
+        "rows": [
+          [
+            1,
+            "2024-01-01",
+            100
+          ],
+          [
+            1,
+            "2024-01-02",
+            300
+          ],
+          [
+            1,
+            "2024-01-03",
+            600
+          ],
+          [
+            2,
+            "2024-01-01",
+            150
+          ],
+          [
+            2,
+            "2024-01-02",
+            400
+          ]
+        ],
+        "_id": {
+          "$oid": "69a05e20b1c24d600dbef3cf"
+        }
+      },
+      "isHidden": false,
+      "_id": {
+        "$oid": "69a05e20b1c24d600dbef3c9"
+      }
+    }
+  ],
+  "hiddenTestCases": [],
+  "acceptanceRate": 0,
+  "totalSubmissions": 0,
+  "totalAccepted": 0,
+  "createdAt": {
+    "$date": "2026-02-26T14:52:16.697Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-26T14:52:16.697Z"
+  },
+  "__v": 0
+}]
